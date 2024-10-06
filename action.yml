@@ -1,4 +1,4 @@
-name: "CreadorCraft-Maker"
+name: "Scratch-CreadorCraft-Maker"
 author: "Creadores Program"
 description: "Github Action to package your CreadorCraft game!"
 inputs:
