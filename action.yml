@@ -1,9 +1,21 @@
 name: "Scratch-CreadorCraft-Maker"
 author: "Creadores Program"
-description: "Github Action to package your CreadorCraft game!"
+description: "Github Action to package your Scratch game to CreatorCraft game!"
 inputs:
   path:
     description: "directory where the game to be packaged is"
+    required: true
+  id:
+    description: "Scratch Game ID"
+    required: false
+  url:
+    description: "Scratch Game URL"
+    required: false
+  pathGame:
+    description: "Scratch game directory"
+    required: false
+  pathDest:
+    description: "destiny of the game from CreatorCraft"
     required: true
 runs:
   using: "node20"
