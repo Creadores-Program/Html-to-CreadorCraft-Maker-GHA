@@ -9,11 +9,11 @@ try{
   var github = require('@actions/github');
   var cheerio = require('cheerio');
   var fs = require("fs");
+  var Htmlifier = import("@sheeptester/htmlifier");
 }catch(error){
   console.error(error.stack || error.message);
   core.setFailed(error.stack || error.message);
 }
-import Htmlifier from '@sheeptester/htmlifier'
 //error Messages
 const errorMessages = {
     inManifest: "\nError in manifest.json",
