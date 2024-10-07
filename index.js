@@ -1,5 +1,5 @@
-const prefix = "[CreadorCraft Maker] ";
-console.info(prefix+"CreadorCraft Maker Action by Creadores Program ©2024");
+const prefix = "[Scratch CreadorCraft Maker] ";
+console.info(prefix+"Scratch CreadorCraft Maker Action by Creadores Program ©2024");
 console.info(prefix+"Loading Libraries...");
 try{
   const { execSync } = require("child_process");
@@ -7,7 +7,8 @@ try{
   execSync("npm install", { stdio: "inherit", cwd: rute });
   var core = require('@actions/core');
   var github = require('@actions/github');
-  var archiver = require('archiver');
+  var cheerio = require('cheerio');
+  var Htmlifier = require("@sheeptester/htmlifier");
   var fs = require("fs");
 }catch(error){
   console.error(error.stack || error.message);
@@ -24,6 +25,41 @@ console.info(prefix+"Done!");
 console.info(prefix+"Creating CreatorCraft Game...");
 var dirGame = core.getInput("path");
 try{
+  var scratchG;
+  function convertCCG(htms){
+    console.info(prefix+"Convert Html to Game by CreatorCraft...");
+    console.info(htms);
+  }
+  (async function(){
+    console.info(prefix+"Convert Scratch Game to HTML...");
+    let html;
+    if(core.getInput("id") != null){
+      scratchG = core.getInput("id");
+      html = await new Htmlifier()
+        .htmlify({ type: "id", id: scratchG })
+        .then(blob => blob.text());
+      convertCCG(html);
+      return;
+    }
+    if(core.getInput("url") != null){
+      scratchG = core.getInput("url");
+      fetch(scratchG)
+        .then(r => r.blob())
+        .then(blob => new Htmlifier().htmlify({ type: "file", file: blob }))
+        .then(blob => blob.text())
+        .then(convertCCG);
+      return;
+    }
+    if(core.getInput("pathGame") != null){
+      scratchG = core.getInput("pathGame");
+      let fromF = require("fetch-blob/from.js");
+      html = await new Htmlifier()
+        .htmlify({ type: "file", file: await fromF(scratchG) })
+        .then(blob => blob.text());
+      convertCCG(html);
+      return;
+    }
+  })();
   var manifestCCG = {};
   fs.readFile(dirGame+"/manifest.json", 'utf8', (err, data) => {
     if(err){
