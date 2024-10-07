@@ -10,3 +10,4 @@ jobs:
         uses: ./
         with:
             path: './test'
+            url: "https://sheeptester.gitlab.io/test/special_cloud_behaviours_example.sb3"
