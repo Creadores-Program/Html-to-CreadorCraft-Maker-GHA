@@ -3,6 +3,7 @@
     "version": "1.0.0",
     "description": "Github Action to package your Scratch game to CreatorCraft game!",
     "main": "index.js",
+    "type": "module",
     "repository": {
       "type": "git",
       "url": "git+https://github.com/Creadores-Program/Scratch-to-CreadorCraft-Maker-GHA.git"
