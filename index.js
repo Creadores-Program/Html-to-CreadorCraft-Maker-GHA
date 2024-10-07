@@ -31,7 +31,7 @@ try{
     console.info(htms);
   }
   async function ScratchCCG(){
-    console.info(Htmlifier);
+    console.info(Htmlifier.default);
     console.info(prefix+"Convert Scratch Game to HTML...");
     let html;
     if(core.getInput("id") != null){
