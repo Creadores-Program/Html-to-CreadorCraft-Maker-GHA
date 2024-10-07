@@ -10,8 +10,7 @@ try{
   var cheerio = require('cheerio');
   var fs = require("fs");
   var Htmlifier;
-  (async function(){ Htmlifier = await import("@sheeptester/htmlifier"); })();
-  console.info(Htmlifier);
+  (async function(){ Htmlifier = await import("@sheeptester/htmlifier"); console.info(Htmlifier); })();
 }catch(error){
   console.error(error.stack || error.message);
   core.setFailed(error.stack || error.message);
