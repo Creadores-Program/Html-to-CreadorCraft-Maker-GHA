@@ -1,7 +1,7 @@
 {
     "name": "Scratch-CreadorCraft-Maker",
     "version": "1.0.0",
-    "description": "Github Action to package your CreatorCraft game!",
+    "description": "Github Action to package your Scratch game to CreatorCraft game!",
     "main": "index.js",
     "repository": {
       "type": "git",
@@ -23,7 +23,6 @@
     "dependencies": {
       "@actions/core": "^1.10.1",
       "@actions/github": "^6.0.0",
-      "archiver": "^7.0.1",
       "@sheeptester/htmlifier": "^1.0.3",
       "cheerio": "^1.0.0"
     }
