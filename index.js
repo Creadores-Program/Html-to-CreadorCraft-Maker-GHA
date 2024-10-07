@@ -31,7 +31,6 @@ try{
     console.info(htms);
   }
   async function ScratchCCG(){
-    console.info(Htmlifier.default);
     console.info(prefix+"Convert Scratch Game to HTML...");
     let html;
     if(core.getInput("id") != null){
@@ -62,7 +61,7 @@ try{
     }
     throw new Error(prefix+"You need to specify URL, ID or Scratch 3 file to convert!");
   }
-  (async function(){ Htmlifier = await import("@sheeptester/htmlifier"); ScratchCCG(); })();
+  (async function(){ Htmlifier = await import("@sheeptester/htmlifier"); Htmlifier = Htmlifier.default; ScratchCCG(); })();
 }catch(error){
     console.error(error.message);
     core.setFailed(error.message);
