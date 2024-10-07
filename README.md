@@ -1,4 +1,4 @@
-# CreadorCraft-Maker-GHA
+# Scratch to CreadorCraft Maker GHA
 
 ![Github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)
 ![Github Actions](https://img.shields.io/badge/Github%20Actions-282a2e?style=for-the-badge&logo=githubactions&logoColor=367cfe)
