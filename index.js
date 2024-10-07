@@ -9,7 +9,9 @@ try{
   var github = require('@actions/github');
   var cheerio = require('cheerio');
   var fs = require("fs");
-  var Htmlifier = import("@sheeptester/htmlifier");
+  var Htmlifier;
+  (async function(){ Htmlifier = await import("@sheeptester/htmlifier"); })();
+  console.info(Htmlifier);
 }catch(error){
   console.error(error.stack || error.message);
   core.setFailed(error.stack || error.message);
