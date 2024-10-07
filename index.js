@@ -8,7 +8,8 @@ try{
   var core = require('@actions/core');
   var github = require('@actions/github');
   var cheerio = require('cheerio');
-  var Htmlifier = require("@sheeptester/htmlifier");
+  var subReq = require('esm')(module);
+  var Htmlifier = subReq("@sheeptester/htmlifier");
   var fs = require("fs");
 }catch(error){
   console.error(error.stack || error.message);
