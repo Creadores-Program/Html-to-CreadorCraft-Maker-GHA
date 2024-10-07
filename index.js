@@ -59,6 +59,7 @@ try{
       convertCCG(html);
       return;
     }
+    throw new Error(prefix+"You need to specify URL, ID or Scratch 3 file to convert!");
   })();
   var manifestCCG = {};
   fs.readFile(dirGame+"/manifest.json", 'utf8', (err, data) => {
