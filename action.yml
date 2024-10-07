@@ -3,7 +3,7 @@ author: "Creadores Program"
 description: "Github Action to package your Scratch game to CreatorCraft game!"
 inputs:
   path:
-    description: "directory where the game to be packaged is"
+    description: "directory where the game to be genered is"
     required: true
   id:
     description: "Scratch Game ID"
@@ -14,9 +14,6 @@ inputs:
   pathGame:
     description: "Scratch game directory"
     required: false
-  pathDest:
-    description: "destiny of the game from CreatorCraft"
-    required: true
 runs:
   using: "node20"
   main: "index.js"
