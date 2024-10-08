@@ -12,6 +12,29 @@ Github Action to transpile your Scratch game to CreatorCraft game on Github!
 If you want to know how to create a game in CreadorCraft I recommend you check out the [CreadorCraft Maker wiki](https://creadorcraft-maker.blogspot.com/p/documentacionwiki.html) you can also run many programming languages for your game!
 
 ## Example Work
+You need a Scratch game file .sb, .sb2 or .sb3
+### Action options
+- path: destination of the game files CreatorCraft (the game's manifest.json should be there when creating) required
+- id: Scratch Game ID if you want to get by Project ID
+- url: Scratch game file URL if you want to get it by url
+- pathGame: Scratch game directory if it is in your Github repo
+- pathCustomJs: additional JavaScript file directory for the Scratch game (must be in a different directory than where the CraftCreator game will be generated, same for the css)
+- pathCustomCSS: additional css to the Scratch game
+- enableGamepad: should accept gamepads?
+- isBakeExtensions: what the variable says (boolean)
+- specialCloudBehaviors: specialCloudBehaviors? same as Htmlifier
+- loadingText: text in the loading bar
+- pathExtensions: a Scratch extensions Json directory example:
+```json
+{
+  "extensions": [
+    //extensions...
+  ]
+}
+```
+
+### Example of task:
+
 ```yml
 name: CI
 
