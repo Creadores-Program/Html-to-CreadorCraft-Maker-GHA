@@ -1,4 +1,4 @@
-name: NodejsCI
+name: ScraftCCMByUrlCI
 on: [push, pull_request]
 jobs:
   build:
@@ -11,3 +11,13 @@ jobs:
         with:
             path: './test'
             url: "https://raw.githubusercontent.com/Creadores-Program/Scratch-to-CreadorCraft-Maker-GHA/refs/heads/main/test/MinecraftTest.sb3"
+      - name: CreadorCraft-Maker
+        uses: Creadores-Program/CreadorCraft-Maker-GHA@v1.1.0
+        with:
+            path: "./test"
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+            name: My Game
+            path: gameBuildCCM/TestName 1.0.0.creadorcraftgame.zip
+
