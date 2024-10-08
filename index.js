@@ -23,10 +23,10 @@ try{
     console.info(prefix+"Convert Html to Game by CreatorCraft...");
     let $ = cheerio.load(htms);
     let jsFileCache = "";
-    $("body").append("<pprojr>"+$('script[type="p4-project"]').html()+"</pprojr>");
-    jsFileCache += "$('body').append(`<script type='p4-project'>`+$(`pprojr`).html()+`<`+`/script>`);\n$('pprojr').remove();\n";
+    jsFileCache += "$('pprojr').each(function(){ $('body').append(`<script type='p4-project'>`+$(this).html()+`<`+`/script>`); $(this).remove(); });\n";
     $("script").each(function(){
       if($(this).attr("type") == "p4-project"){
+        $("body").append("<pprojr>"+$(this).html()+"</pprojr>");
         $(this).remove();
         return;
       }
