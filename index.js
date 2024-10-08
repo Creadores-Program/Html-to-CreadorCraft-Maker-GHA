@@ -56,15 +56,11 @@ try{
       packager.options.custom.css = fs.readFileSync(core.getInput("pathCustomCSS"));
     }
     packager.options.chunks.gamepad = (/true/).test(core.getInput("enableGamepad"));
-    console.info(typeof packager.options.chunks.gamepad);
-    console.info(packager.options.chunks.gamepad);
-    packager.options.autoplay = true;
     packager.options.loadingScreen.text = core.getInput("loadingText");
     if(core.getInput("pathExtensions") != ""){
       packager.options.extensions = JSON.parse(fs.readFileSync(core.getInput("pathExtensions"))).extensions;
     }
     packager.options.bakeExtensions = (/true/).test(core.getInput("isBakeExtensions"));
-    console.info(packager.options.bakeExtensions);
     packager.options.cloudVariables.specialCloudBehaviors = (/true/).test(core.getInput("specialCloudBehaviors"));
     let resultPre = await packager.package();
     convertCCG(resultPre.data);
