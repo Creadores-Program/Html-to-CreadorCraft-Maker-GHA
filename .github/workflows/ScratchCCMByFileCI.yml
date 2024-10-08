@@ -1,4 +1,4 @@
-name: ScraftCCMByUrlCI
+name: ScraftCCMByFileCI
 on: [push, pull_request]
 jobs:
   build:
