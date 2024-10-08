@@ -10,7 +10,7 @@ jobs:
         uses: ./
         with:
             path: './test'
-            url: "https://raw.githubusercontent.com/Creadores-Program/Scratch-to-CreadorCraft-Maker-GHA/refs/heads/main/test/MinecraftTest.sb3"
+            url: "https://raw.githubusercontent.com/Creadores-Program/Scratch-to-CreadorCraft-Maker-GHA/refs/heads/main/MinecraftTest.sb3"
       - name: CreadorCraft-Maker
         uses: Creadores-Program/CreadorCraft-Maker-GHA@v1.1.0
         with:
@@ -20,4 +20,3 @@ jobs:
         with:
             name: My Game
             path: gameBuildCCM/TestName 1.0.0.creadorcraftgame.zip
-
