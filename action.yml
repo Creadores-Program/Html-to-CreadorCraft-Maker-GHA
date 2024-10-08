@@ -30,6 +30,11 @@ inputs:
     required: false
     type: "boolean"
     default: "true"
+  specialCloudBehaviors:
+    description: "specialCloudBehaviors? same as Htmlifier"
+    required: false
+    type: "boolean"
+    default: "false"
   loadingText:
     description: "Loading text"
     required: false
