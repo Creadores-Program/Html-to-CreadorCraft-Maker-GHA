@@ -25,6 +25,17 @@ inputs:
     required: false
     type: "boolean"
     default: "false"
+  isBakeExtensions:
+    description: "are bakeExtensions?"
+    required: false
+    type: "boolean"
+    default: "true"
+  loadingText:
+    description: "Loading text"
+    required: false
+  pathExtensions:
+    description: "Scratch Extensions in json file path"
+    required: false
 runs:
   using: "node20"
   main: "index.js"
