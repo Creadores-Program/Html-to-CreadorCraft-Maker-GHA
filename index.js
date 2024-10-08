@@ -32,17 +32,17 @@ try{
     let jsFileCache = "";
     $("body").append("<pprojr>"+$("script[type='p4-project']").html()+"</pprojr>");
     jsFileCache += "$('body').append(`<script type='p4-project'>`+$(`pprojr`).html()+`</script>`);\n$('pprojs').remove();\n";
-    $("script").get().map(function(i, x){
-      if($(x).attr("type") == "p4-project"){
+    $("script").get().map(function(){
+      if($(this).attr("type") == "p4-project"){
         return;
       }
-      jsFileCache += $(x).html() + "\n";
-      $(x).remove();
+      jsFileCache += $(this).html() + "\n";
+      $(this).remove();
     });
     let cssFileCache = "";
-    $("style").get().map(function(i, x){
-      cssFileCache += $(x).html() + "\n";
-      $(x).remove();
+    $("style").get().map(function(){
+      cssFileCache += $(this).html() + "\n";
+      $(this).remove();
     });
     fs.writeFileSync(dirGame+"/main.js", jsFileCache);
     fs.writeFileSync(dirGame+"/index.css", cssFileCache);
