@@ -34,7 +34,7 @@ try{
       $(this).remove();
     });
     let cssFileCache = "";
-    cssFileCahe += "pprojr{ display: none; visibility: hidden; }\n";
+    cssFileCache += "pprojr{ display: none; visibility: hidden; }\n";
     $("style").each(function(){
       cssFileCache += $(this).html() + "\n";
       $(this).remove();
