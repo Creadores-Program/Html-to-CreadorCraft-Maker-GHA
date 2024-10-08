@@ -14,13 +14,6 @@ try{
   console.error(error.stack || error.message);
   core.setFailed(error.stack || error.message);
 }
-//error Messages
-const errorMessages = {
-    inManifest: "\nError in manifest.json",
-    inFileNotFound: function(file){
-      return "\nError "+file+" Not Found";
-    }
-};
 console.info(prefix+"Done!");
 console.info(prefix+"Creating CreatorCraft Game...");
 var dirGame = core.getInput("path");
@@ -31,7 +24,7 @@ try{
     let $ = cheerio.load(htms);
     let jsFileCache = "";
     $("body").append("<pprojr>"+$("script[type='p4-project']").html()+"</pprojr>");
-    jsFileCache += "$('body').append(`<script type='p4-project'>`+$(`pprojr`).html()+`</script>`);\n$('pprojs').remove();\n";
+    jsFileCache += "$('body').append(`<script type='p4-project'>`+$(`pprojr`).html()+`<`+`/script>`);\n$('pprojs').remove();\n";
     $("script").each(function(){
       if($(this).attr("type") == "p4-project"){
         $(this).remove();
