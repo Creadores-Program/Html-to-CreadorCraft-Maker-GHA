@@ -34,6 +34,7 @@ try{
     jsFileCache += "$('body').append(`<script type='p4-project'>`+$(`pprojr`).html()+`</script>`);\n$('pprojs').remove();\n";
     $("script").each(function(){
       if($(this).attr("type") == "p4-project"){
+        $(this).remove();
         return;
       }
       jsFileCache += $(this).html() + "\n";
