@@ -23,7 +23,7 @@ inputs:
   enableGamepad:
     description: "Should you enable Gamepad?"
     required: false
-    type: "boolean"
+    default: false
 runs:
   using: "node20"
   main: "index.js"
