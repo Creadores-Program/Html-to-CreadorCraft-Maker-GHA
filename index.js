@@ -21,6 +21,7 @@ try{
   var scratchG;
   function convertCCG(htms){
     console.info(prefix+"Convert Html to Game by CreatorCraft...");
+    console.info(htms);
     let $ = cheerio.load(htms);
     let jsFileCache = "";
     $("body").append("<pprojr>"+$("script[type='p4-project']").html()+"</pprojr>");
