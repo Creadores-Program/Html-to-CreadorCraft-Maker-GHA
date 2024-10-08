@@ -55,9 +55,8 @@ try{
     if(core.getInput("pathCustomCSS") != ""){
       packager.options.custom.css = fs.readFileSync(core.getInput("pathCustomCSS"));
     }
-    if(core.getInput("enableGamepad") != "" && core.getInput("enableGamepad")){
-      packager.options.chunks.gamepad = true;
-    }
+    console.info(typeof core.getInput("enableGamepad"));
+    packager.options.chunks.gamepad = core.getInput("enableGamepad");
     let resultPre = await packager.package();
     convertCCG(resultPre.data);
   }
