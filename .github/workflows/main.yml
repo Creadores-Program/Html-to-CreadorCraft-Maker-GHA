@@ -10,4 +10,4 @@ jobs:
         uses: ./
         with:
             path: './test'
-            id: "1030929904"
+            url: "https://raw.githubusercontent.com/Creadores-Program/Scratch-to-CreadorCraft-Maker-GHA/refs/heads/main/test/MinecraftTest.sb3"
