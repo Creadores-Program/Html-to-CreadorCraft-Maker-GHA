@@ -21,11 +21,10 @@ try{
   var scratchG;
   function convertCCG(htms){
     console.info(prefix+"Convert Html to Game by CreatorCraft...");
-    console.info(htms);
     let $ = cheerio.load(htms);
     let jsFileCache = "";
-    $("body").append("<pprojr>"+$("script[type='p4-project']").html()+"</pprojr>");
-    jsFileCache += "$('body').append(`<script type='p4-project'>`+$(`pprojr`).html()+`<`+`/script>`);\n$('pprojs').remove();\n";
+    $("body").append("<pprojr>"+$('script[type="p4-project"]').html()+"</pprojr>");
+    jsFileCache += "$('body').append(`<script type='p4-project'>`+$(`pprojr`).html()+`<`+`/script>`);\n$('pprojr').remove();\n";
     $("script").each(function(){
       if($(this).attr("type") == "p4-project"){
         $(this).remove();
