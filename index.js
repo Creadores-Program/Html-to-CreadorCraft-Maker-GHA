@@ -33,7 +33,6 @@ try{
     $("body").append("<pprojr>"+$("script[type='p4-project']").html()+"</pprojr>");
     jsFileCache += "$('body').append(`<script type='p4-project'>`+$(`pprojr`).html()+`</script>`);\n$('pprojs').remove();\n";
     $("script").each(function(){
-      console.info($(this).html());
       if($(this).attr("type") == "p4-project"){
         return;
       }
@@ -41,7 +40,7 @@ try{
       $(this).remove();
     });
     let cssFileCache = "";
-    $("style").get().map(function(){
+    $("style").each(function(){
       cssFileCache += $(this).html() + "\n";
       $(this).remove();
     });
@@ -70,7 +69,6 @@ try{
   }
   (async function (){
     console.info(prefix+"Convert Scratch Game to HTML...");
-    console.info(typeof core.getInput("id"));
     let DataSG;
     if(core.getInput("id") != ""){
       scratchG = core.getInput("id");
