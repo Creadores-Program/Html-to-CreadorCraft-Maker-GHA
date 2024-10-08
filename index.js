@@ -35,13 +35,13 @@ try{
     let loadProject = await Packager.loadProject(progetD, callbacK);
     let packager = new Packager.Packager();
     packager.project = loadProject;
-    if(core.getInput("pathCustomJs") != null){
+    if(core.getInput("pathCustomJs") != ""){
       packager.options.custom.js = fs.readFileSync(core.getInput("pathCustomJs"));
     }
-    if(core.getInput("pathCustomCSS")){
+    if(core.getInput("pathCustomCSS") != ""){
       packager.options.custom.css = fs.readFileSync(core.getInput("pathCustomCSS"));
     }
-    if(core.getInput("enableGamepad")){
+    if(core.getInput("enableGamepad") != ""){
       packager.options.chunks.gamepad = true;
     }
     let resultPre = await packager.package();
@@ -49,22 +49,22 @@ try{
   }
   (async function (){
     console.info(prefix+"Convert Scratch Game to HTML...");
-    console.info("Aquii"+core.getInput("id"));
+    console.info(typeof core.getInput("id"));
     let DataSG;
-    if(core.getInput("id") != null){
+    if(core.getInput("id") != ""){
       scratchG = core.getInput("id");
       let Dat = await (await fetch("https://trampoline.turbowarp.org/api/projects/"+scratchG)).json();
       let token = Dat.project_token;
       processStoH(await (await fetch("https://projects.scratch.mit.edu/"+scratchG+"?token="+token)).arrayBuffer());
       return;
     }
-    if(core.getInput("url") != null){
+    if(core.getInput("url") != ""){
       scratchG = core.getInput("url");
       DataSG = await (await fetch(scratchG)).arrayBuffer();
       processStoH(DataSG);
       return;
     }
-    if(core.getInput("pathGame") != null){
+    if(core.getInput("pathGame") != ""){
       scratchG = core.getInput("pathGame");
       processStoH(fs.readFileSync(scratchG));
       return;
