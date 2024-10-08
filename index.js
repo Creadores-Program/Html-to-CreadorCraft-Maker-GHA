@@ -28,7 +28,27 @@ try{
   var scratchG;
   function convertCCG(htms){
     console.info(prefix+"Convert Html to Game by CreatorCraft...");
-    console.info(htms);
+    let $ = cheerio.load(htms);
+    let jsFileCache = "";
+    $("body").append("<pprojr>"+$("script[type='p4-project']").html()+"</pprojr>");
+    jsFileCache += "$('body').append(`<script type='p4-project'>`+$(`pprojr`).html()+`</script>`);\n$('pprojs').remove();\n";
+    $("script").get().map(function(i, x){
+      if($(x).attr("type") == "p4-project"){
+        return;
+      }
+      jsFileCache += $(x).html() + "\n";
+      $(x).remove();
+    });
+    let cssFileCache = "";
+    $("style").get().map(function(i, x){
+      cssFileCache += $(x).html() + "\n";
+      $(x).remove();
+    });
+    fs.writeFileSync(dirGame+"/main.js", jsFileCache);
+    fs.writeFileSync(dirGame+"/index.css", cssFileCache);
+    fs.writeFileSync(dirGame+"/index.html", $.html());
+    console.info(prefix+"Done!");
+    console.info(prefix+"Saved Your project in "+dirGame+"/*");
   }
   async function processStoH(progetD){
     let callbacK = (type, a, b)=> {};
@@ -41,7 +61,7 @@ try{
     if(core.getInput("pathCustomCSS") != ""){
       packager.options.custom.css = fs.readFileSync(core.getInput("pathCustomCSS"));
     }
-    if(core.getInput("enableGamepad") != ""){
+    if(core.getInput("enableGamepad") != "" && core.getInput("enableGamepad")){
       packager.options.chunks.gamepad = true;
     }
     let resultPre = await packager.package();
