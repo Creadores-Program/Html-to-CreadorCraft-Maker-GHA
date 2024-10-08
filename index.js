@@ -9,7 +9,7 @@ try{
   var github = require('@actions/github');
   var cheerio = require('cheerio');
   var fs = require("fs");
-  var Htmlifier;
+  var Packager = require("@turbowarp/packager");
 }catch(error){
   console.error(error.stack || error.message);
   core.setFailed(error.stack || error.message);
@@ -30,38 +30,46 @@ try{
     console.info(prefix+"Convert Html to Game by CreatorCraft...");
     console.info(htms);
   }
-  async function ScratchCCG(){
+  async function processStoH(progetD){
+    let callbacK = (type, a, b)=> {};
+    let loadProject = await Packager.loadProject(progetD, callbacK);
+    let packager = new Packager.Packager();
+    packager.project = loadProject;
+    if(core.getInput("pathCustomJs") != null){
+      packager.options.custom.js = fs.readFileSync(core.getInput("pathCustomJs"));
+    }
+    if(core.getInput("pathCustomCSS")){
+      packager.options.custom.css = fs.readFileSync(core.getInput("pathCustomCSS"));
+    }
+    if(core.getInput("enableGamepad")){
+      packager.options.chunks.gamepad = true;
+    }
+    let resultPre = await packager.package();
+    convertCCG(resultPre.data);
+  }
+  (async function (){
     console.info(prefix+"Convert Scratch Game to HTML...");
-    let html;
+    let DataSG;
     if(core.getInput("id") != null){
       scratchG = core.getInput("id");
-      html = await new Htmlifier()
-        .htmlify({ type: "id", id: scratchG })
-        .then(blob => blob.text());
-      convertCCG(html);
+      let Dat = await (await fetch("https://trampoline.turbowarp.org/api/projects/"+scratchG)).json();
+      let token = Dat.project_token;
+      processStoH(await (await fetch("https://projects.scratch.mit.edu/"+scratchG+"?token="+token)).arrayBuffer());
       return;
     }
     if(core.getInput("url") != null){
       scratchG = core.getInput("url");
-      fetch(scratchG)
-        .then(r => r.blob())
-        .then(blob => new Htmlifier().htmlify({ type: "file", file: blob }))
-        .then(blob => blob.text())
-        .then(convertCCG);
+      DataSG = await (await fetch(scratchG)).arrayBuffer();
+      processStoH(DataSG);
       return;
     }
     if(core.getInput("pathGame") != null){
       scratchG = core.getInput("pathGame");
-      let fromF = require("fetch-blob/from.js");
-      html = await new Htmlifier()
-        .htmlify({ type: "file", file: await fromF(scratchG) })
-        .then(blob => blob.text());
-      convertCCG(html);
+      processStoH(fs.readFileSync(scratchG));
       return;
     }
     throw new Error(prefix+"You need to specify URL, ID or Scratch 3 file to convert!");
-  }
-  (async function(){ Htmlifier = await import("@sheeptester/htmlifier"); Htmlifier = Htmlifier.default; ScratchCCG(); })();
+  })();
 }catch(error){
     console.error(error.message);
     core.setFailed(error.message);

@@ -14,6 +14,15 @@ inputs:
   pathGame:
     description: "Scratch game directory"
     required: false
+  pathCustomJs:
+    description: "Custom js for Game"
+    required: false
+  pathCustomCSS:
+    description: "Custom css for Game"
+    required: false
+  enableGamepad:
+    description: "Should you enable Gamepad?"
+    required: false
 runs:
   using: "node20"
   main: "index.js"
