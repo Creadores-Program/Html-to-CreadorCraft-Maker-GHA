@@ -56,6 +56,12 @@ try{
       packager.options.custom.css = fs.readFileSync(core.getInput("pathCustomCSS"));
     }
     packager.options.chunks.gamepad = (/true/).test(core.getInput("enableGamepad"));
+    packager.options.autoplay = true;
+    packager.options.loadingScreen.text = core.getInput("loadingText");
+    if(core.getInput("pathExtensions") != ""){
+      packager.options.extensions = JSON.parse(fs.readFileSync(core.getInput("pathExtensions"))).extensions;
+    }
+    packager.options.bakeExtensions = (/true/).test(core.getInput("isBakeExtensions"));
     let resultPre = await packager.package();
     convertCCG(resultPre.data);
   }
