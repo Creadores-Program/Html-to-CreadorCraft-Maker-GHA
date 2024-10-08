@@ -62,6 +62,7 @@ try{
       packager.options.extensions = JSON.parse(fs.readFileSync(core.getInput("pathExtensions"))).extensions;
     }
     packager.options.bakeExtensions = (/true/).test(core.getInput("isBakeExtensions"));
+    packager.options.cloudVariables.specialCloudBehaviors = (/true/).test(core.getInput("specialCloudBehaviors"));
     let resultPre = await packager.package();
     convertCCG(resultPre.data);
   }
