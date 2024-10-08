@@ -49,10 +49,10 @@ try{
   }
   (async function (){
     console.info(prefix+"Convert Scratch Game to HTML...");
+    console.info("Aquii"+core.getInput("id"));
     let DataSG;
     if(core.getInput("id") != null){
       scratchG = core.getInput("id");
-      console.info(core.getInput("id"));
       let Dat = await (await fetch("https://trampoline.turbowarp.org/api/projects/"+scratchG)).json();
       let token = Dat.project_token;
       processStoH(await (await fetch("https://projects.scratch.mit.edu/"+scratchG+"?token="+token)).arrayBuffer());
