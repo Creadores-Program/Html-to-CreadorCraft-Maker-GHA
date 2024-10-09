@@ -46,6 +46,14 @@ jobs:
     if: ${{ !contains(github.event.head_commit.message, '[ci skip]') }}
     steps:
       - uses: actions/checkout@v4
+      - name: Scratch-CreadorCraft-Maker
+        uses: Creadores-Program/Scratch-to-CreadorCraft-Maker-GHA@v1.0.0
+        with:
+          path: "./src" # Destinity CreadorCraft Game (this not genere manifest.json)
+          # id: "id" Id by game Scratch
+          # url: "url" Url by game Scratch
+          pathGame: "./Game.sb3" # Only uses 1 of the above
+      # Pack..
       - name: CreadorCraft-Maker
         uses: Creadores-Program/CreadorCraft-Maker-GHA@v1.1.0
         with:
@@ -58,7 +66,10 @@ jobs:
 ```
 
 ### Structure Repo:
-myName/RepoGameName/src
+myName/RepoGameName/
+- Game.sb3
+
+- src
 
    - manifest.json:
    ```json
@@ -71,11 +82,10 @@ myName/RepoGameName/src
     "mainJS": "index.js"
    }
    ```
-   - index.html
-   - index.css
-   - index.js
 
-more info in Wiki!
+this use TurboWarp!
+
+[CreadorCraft Maker Action](https://github.com/marketplace/actions/creadorcraft-maker)
 
 Made in Mexico.
 
