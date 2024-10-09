@@ -79,7 +79,7 @@ myName/RepoGameName/
     "version": "1.0.0",
     "mainHtml": "index.html",//dir main html file
     "mainCSS": "index.css",
-    "mainJS": "index.js"
+    "mainJS": "main.js"
    }
    ```
 
