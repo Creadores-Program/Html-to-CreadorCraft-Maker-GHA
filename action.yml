@@ -1,45 +1,18 @@
-name: "Scratch-CreadorCraft-Maker"
+name: "Html-CreadorCraft-Maker"
 author: "Creadores Program"
-description: "Github Action to package your Scratch game to CreatorCraft game!"
+description: "Github Action to package your Html5 game to CreatorCraft game!"
 inputs:
   path:
     description: "destination directory for the generated game"
     required: true
-  id:
-    description: "Scratch Game ID"
-    required: false
-  url:
-    description: "Scratch Game URL"
-    required: false
   pathGame:
-    description: "Scratch game directory"
-    required: false
+    description: "Html game directory"
+    required: true
   pathCustomJs:
     description: "Custom js for Game"
     required: false
   pathCustomCSS:
     description: "Custom css for Game"
-    required: false
-  enableGamepad:
-    description: "Should you enable Gamepad?"
-    required: false
-    type: "boolean"
-    default: "false"
-  isBakeExtensions:
-    description: "are bakeExtensions?"
-    required: false
-    type: "boolean"
-    default: "true"
-  specialCloudBehaviors:
-    description: "specialCloudBehaviors? same as Htmlifier"
-    required: false
-    type: "boolean"
-    default: "false"
-  loadingText:
-    description: "Loading text"
-    required: false
-  pathExtensions:
-    description: "Scratch Extensions in json file path"
     required: false
 runs:
   using: "node20"
