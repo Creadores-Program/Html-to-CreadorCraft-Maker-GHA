@@ -1,4 +1,4 @@
-name: ScraftCCMByFileCI
+name: HtmlCI
 on: [push, pull_request]
 jobs:
   build:
@@ -6,11 +6,11 @@ jobs:
     if: ${{ !contains(github.event.head_commit.message, '[ci skip]') }}
     steps:
       - uses: actions/checkout@v4
-      - name: Scratch-CreadorCraft-Maker
+      - name: Html-CreadorCraft-Maker
         uses: ./
         with:
             path: './test'
-            pathGame: "./MinecraftTest.sb3"
+            pathGame: "./Test.html"
       - name: CreadorCraft-Maker
         uses: Creadores-Program/CreadorCraft-Maker-GHA@v1.1.0
         with:
