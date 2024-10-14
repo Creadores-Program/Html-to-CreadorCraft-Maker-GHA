@@ -61,7 +61,7 @@ myName/RepoGameName/
     "name": "TestName",
     "description": "Test game",
     "version": "1.0.0",
-    "mainHtml": "index.html",//dir main html file
+    "mainHtml": "index.html",
     "mainCSS": "index.css",
     "mainJS": "main.js"
    }
