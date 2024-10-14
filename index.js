@@ -1,5 +1,5 @@
-const prefix = "[Scratch CreadorCraft Maker] ";
-console.info(prefix+"Scratch CreadorCraft Maker Action by Creadores Program ©2024");
+const prefix = "[Html CreadorCraft Maker] ";
+console.info(prefix+"Html CreadorCraft Maker Action by Creadores Program ©2024");
 console.info(prefix+"Loading Libraries...");
 try{
   const { execSync } = require("child_process");
