@@ -1,23 +1,23 @@
 {
-    "name": "Scratch-CreadorCraft-Maker",
+    "name": "Html-CreadorCraft-Maker",
     "version": "1.0.0",
-    "description": "Github Action to package your Scratch game to CreatorCraft game!",
+    "description": "Github Action to package your Html5 game to CreatorCraft game!",
     "main": "index.js",
     "repository": {
       "type": "git",
-      "url": "git+https://github.com/Creadores-Program/Scratch-to-CreadorCraft-Maker-GHA.git"
+      "url": "git+https://github.com/Creadores-Program/Html-to-CreadorCraft-Maker-GHA.git"
     },
     "keywords": [
       "github",
       "action",
       "node",
       "CreadorCraft",
-      "Scratch"
+      "Html"
     ],
     "author": "Creadores Program",
     "license": "MIT",
     "bugs": {
-      "url": "https://github.com/Creadores-Program/Scratch-to-CreadorCraft-Maker-GHA/issues"
+      "url": "https://github.com/Creadores-Program/Html-to-CreadorCraft-Maker-GHA/issues"
     },
     "homepage": "https://creadorcraft-maker.blogspot.com/",
     "dependencies": {
