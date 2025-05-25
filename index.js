@@ -22,8 +22,27 @@ try{
     console.info(prefix+"Convert Html to Game by CreatorCraft...");
     let $ = cheerio.load(htms);
     let jsFileCache = "";
+    if(fs.existsSync(dirGame+"/manifest.json")){
+      let manifestG = JSON.parse(fs.readFileSync(dirGame+"/manifest.json", "utf8"));
+      $("link").each(function(){
+        if(manifestG.importCSSMap == null){
+          manifestG.importCSSMap = [];
+        }
+        let tagL = {};
+        for(let attrName in this.attribs){
+          tagL[attrName] = this.attribs[attrName];
+        }
+        manifestG.importCSSMap.push(tagL);
+      });
+    }
     $("script").each(function(){
+      if($(this).attr("src") != null){
+        jsFileCache += "$.getScript("+JSON.stringify($(this).attr("src"))+", function(){\n";
+      }
       jsFileCache += $(this).html() + "\n";
+      if($(this).attr("src") != null){
+        jsFileCache += "});\n";
+      }
       $(this).remove();
     });
     if(core.getInput("pathCustomJs") != null && core.getInput("pathCustomJs").trim() != ""){
