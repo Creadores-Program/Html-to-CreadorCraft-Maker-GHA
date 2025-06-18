@@ -33,7 +33,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Scratch-CreadorCraft-Maker
-        uses: Creadores-Program/Html-to-CreadorCraft-Maker-GHA@v1.1.0
+        uses: Creadores-Program/Html-to-CreadorCraft-Maker-GHA@v1.2.0
         with:
           path: "./src" # Destinity CreadorCraft Game (this not genere manifest.json)
           pathGame: "./Game.html"
